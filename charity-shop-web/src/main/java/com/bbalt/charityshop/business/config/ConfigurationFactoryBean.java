@@ -7,6 +7,7 @@ package com.bbalt.charityshop.business.config;
 
 import com.bbalt.charityshop.business.filter.CrossDomainFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 
 /**
@@ -36,6 +38,12 @@ public class ConfigurationFactoryBean {
         registration.setFilter(crossDomainFilter());
         registration.addUrlPatterns("/*");
         return registration;
+    }
+
+    @Bean(name = "dataSource")
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource dataSource() {
+        return new com.alibaba.druid.pool.DruidDataSource();
     }
 
     @Bean
