@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -9,26 +10,35 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bbalt.charityshop</groupId>
-	<artifactId>springboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot</name>
-	<description>Demo project for Spring Boot</description>
+	<artifactId>charity-shop</artifactId>
+	<version>1.0.0</version>
+	<name>charity-shop</name>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<swagger.version>2.7.0</swagger.version>
+		<com.alibaba.easyexcel>2.1.2</com.alibaba.easyexcel>
+		<com.alibaba.fastjson>1.2.44</com.alibaba.fastjson>
 	</properties>
+
+	<modules>
+		<module>charity-shop-web</module>
+		<module>charity-shop-service</module>
+		<module>charity-shop-dal</module>
+		<module>charity-shop-util</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.7.0</version>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.7.0</version>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>
@@ -53,15 +63,26 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>easyexcel</artifactId>
+			<version>${com.alibaba.easyexcel}</version>
+		</dependency>
+
+		<!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${com.alibaba.fastjson}</version>
+		</dependency>
+
+		<!-- google guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>27.0-jre</version>
+		</dependency>
+	</dependencies>
 
 </project>
