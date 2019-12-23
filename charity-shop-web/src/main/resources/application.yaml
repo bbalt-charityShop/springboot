@@ -1,3 +1,29 @@
 spring:
   profiles:
     active: @profileActive@
+
+# mybatis-plus 配置
+mybatis-plus:
+  # 实体类扫描路径
+  type-aliases-package: com.bbalt.charityshop.business.dal.model
+  # xml 扫描路径
+  mapper-locations: classpath*:*Mapper.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    # 关闭 mybatis-plus的 banner
+    banner: false
+
+# swagger 配置
+swagger:
+  config:
+    basePackage: com.bbalt.charityshop.business.web
+    title: bbalt-charityShop API文档
+    version: 1.0.0
+    description: bbalt-charityShop API文档
+    termsOfServiceUrl: https://github.com/bbalt-charityShop
+    license: Apache 2.0
+    licenseUrl: http://www.apache.org/licenses/LICENSE-2.0
+    contact: {name:,url:,email:}
+    vendorExtensions: []
+
